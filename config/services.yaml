@@ -4,8 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    stripe.secret_key: sk_test_51Mzp3lJmOSxKOK73ubWAcwJOWiGAbQ5ZuWAxCHYL0pZGORVaThSjlCtdwVQpJYPzocDeu3Nh80sVBP59bz8Ycjj200w07WqLpI
+    stripe.public_key: pk_test_51Mzp3lJmOSxKOK73Ba09gt3LTwB9JXZq84SS0U2H6F3XZO2hrPzatEvWK83PELX5VN2yk0z9MNFvLY72eOBBoUOr00bCDzPwzZ
 services:
+    Stripe\StripeClient:
+            arguments:
+                - '%stripe.secret_key%'
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

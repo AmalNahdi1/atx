@@ -1,0 +1,26 @@
+{% extends 'basefront.html.twig' %}
+{% block body %}
+  <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+            
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">EDIT Abonnement</h6>
+                {{ form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+                    {{ form_widget(form) }}
+                    <button class="btn">{{ button_label|default('Save') }}</button>
+                {{ form_end(form) }}
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+    </div>
+    <a href="{{ path('app_contratf_index') }}">back to list</a>
+        
+{% endblock %} 

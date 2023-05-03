@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title style="color: red">Contrat {{ contrat.id }}</title>
+	<style>
+		body {
+
+			font-family: Garamond, serif;
+			color: black;
+			line-height: 1.5;
+			margin: 0;
+			border: 5px solid black;
+			padding: 20px;
+			text-align: justify;
+		}
+		p {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			font-size: 18px;
+		}
+		strong {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<img src="http://localhost:8000/logn1.png" alt="AutoXpress Logo " style="width: 100px; position: absolute; top: 0; right: 0;">
+	<p >Nous sommes ravis que vous cher conducteur d'id numero  {{ contrat.idConducteur }} </p>
+	<p>soyez disposé à signer ce contrat  num : {{ contrat.id }}</p>
+	<p>avec l admin d'ID : {{ contrat.idAdmin }}</p>
+	<p>Nous sommes convaincus que vous serez satisfait de notre service et nous sommes impatients de vous fournir une expérience de Date Début: {{ contrat.dateDebut|date('d/m/Y') }}</p>
+	<p><strong>jusqua Date Fin:</strong> {{ contrat.dateFin|date('d/m/Y') }}</p>
+	<p><strong>avec le total Prix:</strong> {{ contrat.prix }}</p>
+	<p><strong>le statut du contrat :</strong> {{ contrat.statut }}</p>
+	<p><strong>QR Code:</strong> {{ contrat.qrCode }}</p>
+	<p>Thank you for choosing our services.</p>
+</body>
+</html>

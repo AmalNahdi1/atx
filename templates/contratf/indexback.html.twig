@@ -1,0 +1,50 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Contrat</h6>
+                        <a href="{{ path('app_contratf_new') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>id</th>
+                                <th>date debut</th>
+                                <th>date fin</th>
+                                <th>prix</th>
+                                <th>actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for a in contrats %}
+                                <tr>
+                            <td>{{ a.id }}</td>
+                             <td>
+                              
+                              {{a.dateDebut ? a.dateDebut|date('Y-m-d') : '' }}
+                            </td>
+                             <td>
+                              
+                              {{a.dateFin ? a.dateFin|date('Y-m-d') : '' }}
+                            </td>
+                            <td>{{ a.prix }}</td>
+                              
+                            <td style='display:flex'>                    
+                            <a href="{{ path('app_contratf_edit',{'id': a.id}) }}"><button class="btn btn-primary" type="button">Modifier</button></a>
+                            <a href="{{ path('app_contratf_delete',{'id': a.id}) }}">
+                            <button class="btn btn-danger" type="button">Supprimer</button>
+                            </a>
+                            </td>
+
+                           
+                          </tr>
+                              {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+{% endblock %} 
+

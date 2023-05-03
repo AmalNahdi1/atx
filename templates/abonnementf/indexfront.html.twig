@@ -1,0 +1,38 @@
+{% extends 'basefront.html.twig' %}
+{% block body %}
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block bg-secondary text-primary py-1 px-4">abonnements</p>
+                <h1 class="text-uppercase">subscribe</h1>
+            </div>
+            <div class="row g-4">
+                {% for c in abonnements %}
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
+                        <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <img class="img-fluid" src="{{ asset('2.pngh') }}" alt="">
+                            <i class="fa fa-subscribe"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">{{c.typeab}}</h3>
+                            <p>{{c.modepaiementab}}.</p>
+                            <span class="text-uppercase text-primary">${{c.prixab}}</span>
+                        </div>
+                        <a class="btn btn-square" href="{{ path('app_subscribe',{'id': c.id}) }}"><i class="fa fa-plus text-primary"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock body %}

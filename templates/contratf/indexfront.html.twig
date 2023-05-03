@@ -1,0 +1,140 @@
+{% extends 'basefront.html.twig' %}
+{% block body %}
+ <!-- Working Hours Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+
+
+
+
+
+                                    <a href="{{ path('app_contratf_new') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+
+                              {% for a in contrats %}
+<a href="{{ path('generate_pdf',{'id': a.id}) }}" class="btn btn-primary">Generate PDF</a>
+   <a href="{{ path('download_pdf',{'id': a.id}) }}" class="btn btn-primary">Download PDF</a>
+                              {% endfor %}
+
+
+
+
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <img class="img-fluid h-100" src="img/tunis.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-secondary h-100 d-flex flex-column justify-content-center p-5">
+                        <p class="d-inline-flex bg-dark text-primary py-1 px-4 me-auto">contrat </p>
+                        <div>
+                            {% for a in contrats %}
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">id de contrat </h6>
+                                <span class="text-uppercase">{{ a.id }}</span>
+                            </div>
+                             <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">id conducteur</h6>
+                                <span class="text-uppercase">{{ a.idConducteur }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">date debut de contrat </h6>
+                                <span class="text-uppercase">{{a.dateDebut ? a.dateDebut|date('Y-m-d') : '' }}</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">date fin de contrat </h6>
+                                <span class="text-uppercase">{{a.dateFin ? a.dateFin|date('Y-m-d') : '' }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">prix</h6>
+                                <span class="text-uppercase">{{ a.prix }}</span>
+                            </div>
+                             <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">statut</h6>
+                                <span class="text-uppercase">{{ a.statut }}</span>
+                            </div>
+                            
+                           
+
+                            <div class="d-flex justify-content-between border-bottom py-2">
+
+
+                            <a href="{{ path('app_contratf_edit',{'id': a.id}) }}">
+                            <button class="btn btn-primary" type="button">Modifier</button></a>
+                            <a href="{{ path('app_contratf_delete',{'id': a.id}) }}">
+                             <button class="btn btn-primary" type="button">Supprimer</button></a>
+                             </div>
+                                                         {% endfor %}
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Working Hours End -->
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="d-none">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Contrat</h6>
+                        <a href="{{ path('app_contratf_new') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                              <tr>
+                              <th>   </th>
+                                <th>id</th>
+                                <th>date debut</th>
+                                <th>date fin</th>
+                                <th>prix</th>
+                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for a in contrats %}
+                                <tr>
+                            <td>{{ a.id }}</td>
+                             <td>
+                              
+                              {{a.dateDebut ? a.dateDebut|date('Y-m-d') : '' }}
+                            </td>
+                             <td>
+                              
+                              {{a.dateFin ? a.dateFin|date('Y-m-d') : '' }}
+                            </td>
+                            <td>{{ a.prix }}</td>
+                              
+                            <td style='display:flex'>
+  <a href="{{ path('generate_pdf',{'id': a.id}) }}" class="btn btn-primary">Generate PDF</a>
+   <a href="{{ path('download_pdf',{'id': a.id}) }}" class="btn btn-primary">Download PDF</a>
+
+                            <a href="{{ path('app_contratf_edit',{'id': a.id}) }}"><button class="btn btn-primary" type="button">Modifier</button></a>
+                            <a href="{{ path('app_contratf_delete',{'id': a.id}) }}">
+                            <button class="btn btn-danger" type="button">Supprimer</button>
+                            </a>
+                            </td>
+
+                           
+                          </tr>
+                              {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+{% endblock %} 
+

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stripe Paiement !{% endblock %}
+
+{% block body %}
+
+<section class="checkout">
+<form action="{{ path('app_checkout0') }}" method="POST">
+    <input type="hidden" name="amount" value="{{ reservation.prix }}">
+    <input type="hidden" name="name" value="{{ reservation.id }}">
+    <button type="submit">Pay Now</button>
+</form>
+
+
+</section>
+
+{% endblock %}
+
+    
+
+
+

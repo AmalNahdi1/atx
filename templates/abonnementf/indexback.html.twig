@@ -1,0 +1,82 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">abonnements</h6>
+                            <a href="{{ path('app_abonnementf_new') }}"> <button class="btn btn-primary" type="button">Ajouter</button></a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                   <div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Responsive Table</h6>
+        <div class="table-responsive">
+            <form action="{{ path('app_abonnementb_index') }}" method="get" class="mb-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search_keyword" value="{{ searchKeyword }}" placeholder="Search...">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <a href="{{ path('app_abonnementb_index', {'sort_by': 'id'}) }}">
+                                ID
+                                                           </a>
+                        </th>
+                        <th scope="col">
+                            <a href="{{ path('app_abonnementb_index', {'sort_by': 'type'}) }}">
+                                Type
+                                
+                            </a>
+                        </th>
+                        <th scope="col">
+                            <a href="{{ path('app_abonnementb_index', {'sort_by': 'prix'}) }}">
+                                Prix
+                                
+                            </a>
+                        </th>
+                        <th scope="col">
+                            <a href="{{ path('app_abonnementb_index', {'sort_by': 'modepaiement'}) }}">
+                                Mode de Paiement
+                            </a>
+                        </th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                                {% for a in abonnements %}
+                          <tr>
+                            <td>{{ a.id }}</td>
+                            <td>{{ a.typeab }}</td>
+                            <td>{{ a.prixab }}</td>
+                            <td>{{ a.modepaiementab }}</td>
+                            <td style='display:flex'>                    
+                           <a href="{{ path('app_abonnementf_edit',{'id': a.id}) }}"> <button class="btn btn-primary" type="button">Modifier</button></a>
+
+                           <a href="{{ path('app_abonnementf_delete',{'id': a.id}) }}">
+                            <button class="btn btn-danger" type="button">Supprimer</button></a>
+
+                                </td>
+
+                           
+                          </tr>
+          
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+{% endblock %} 
